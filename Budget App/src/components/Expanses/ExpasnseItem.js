@@ -6,25 +6,24 @@ import ExpanseDate from "../Expanses/ExpanseDate";
 import "./ExpasnseItem.css";
 
 const ExpasnseItem = (props) => {
+  const [title, setTitle] = useState(props.title);
 
-    const [title, setTitle] = useState(props.title);
+  // clickHandler event-handler
+  const clickHandler = () => {
+    setTitle("Updated");
+    console.log(title);
+  };
 
-    // clickHandler event-handler
-    const clickHandler = () => {
-        setTitle("Updated")
-        console.log(title)
-    }
-
-    return (
-        <Card className="expense-item">
-            <ExpanseDate date={props.date} />
-            <div className="expense-item__description">
-                <h2>{title}</h2>
-                <div className="expense-item__price"> Rs.{props.price}</div>
-            </div>
-            <button onClick={clickHandler}>Click Here</button>
-        </Card>
-    );
-}
+  return (
+    <Card className="expense-item">
+      <ExpanseDate date={props.date} />
+      <div className="expense-item__description">
+        <h2>{props.title}</h2>
+        <div className="expense-item__price"> Rs.{props.price}</div>
+      </div>
+      <button onClick={clickHandler}>Click Here</button>
+    </Card>
+  );
+};
 
 export default ExpasnseItem;
