@@ -12,9 +12,22 @@ const Login = (props) => {
   const [formIsValid, setFormIsValid] = useState(false);
 
   useEffect(() => {
-    setFormIsValid(
-      enteredEmail.includes("@") && enteredPassword.trim().length > 6
-    );
+    // We want to valid after certain amount of time user insert details
+    const timer = setTimeout(() => {
+      console.log("Time out");
+      setFormIsValid(
+        enteredEmail.includes("@") && enteredPassword.trim().length > 6
+      );
+    }, 1000);
+
+    // this return function only returened after the useEffect call-back execute 1st time
+    // after call-back execute 1st time after that this execute
+    return ()=>{
+      console.log("Clean Up function");
+      clearTimeout(timer);
+      // use for tp clear time we give for the user to enter detilas and clear that time and start from begning
+      // in short word to reset the time 
+    }
   }, [enteredEmail, enteredPassword]);
 
   const emailChangeHandler = (event) => {
