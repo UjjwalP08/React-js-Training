@@ -3,3 +3,5 @@
 --> wrap the main index.js file with <Provider> </Provider> so we can use the redux inside all the our componet and pass the prop which name store and the value of this prop is our store 
 
 --> use the useSelector() redux hook in the counter to extract the data from store
+
+--> use the useDispatch() hook in counter to trigger/dispatch the action when the button clicked
