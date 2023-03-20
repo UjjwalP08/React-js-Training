@@ -5,3 +5,5 @@
 --> use the useSelector() redux hook in the counter to extract the data from store
 
 --> use the useDispatch() hook in counter to trigger/dispatch the action when the button clicked
+
+--> in increase by 5 buttons arrow function we pass payload through dispatch function
