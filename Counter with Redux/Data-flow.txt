@@ -7,3 +7,5 @@
 --> use the useDispatch() hook in counter to trigger/dispatch the action when the button clicked
 
 --> in increase by 5 buttons arrow function we pass payload through dispatch function
+
+--> create the function of toggle button using reducer and manage through a multiple state ,the another state we add here it is showCounter state
