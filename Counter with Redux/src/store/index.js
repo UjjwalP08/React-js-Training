@@ -19,7 +19,7 @@ const countReducer = (state={counter:0}, action) => {
     return state;
 };
 
-const store = redux.createStore(countReducer);
+const store = createStore(countReducer);
 
 
-export default store;
+export default store; 
