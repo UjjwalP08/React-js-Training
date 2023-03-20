@@ -1,0 +1,2 @@
+-->  initally we create the store folder in src folder which contain our redux file (index.js) 
+
