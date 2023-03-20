@@ -1,3 +1,5 @@
 -->  initally we create the store folder in src folder which contain our redux file (index.js) 
 
 --> wrap the main index.js file with <Provider> </Provider> so we can use the redux inside all the our componet and pass the prop which name store and the value of this prop is our store 
+
+--> use the useSelector() redux hook in the counter to extract the data from store
