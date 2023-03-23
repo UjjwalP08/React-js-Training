@@ -25,7 +25,11 @@ function App() {
       isInintal = false;
       return;
     }
-    dispatch(sendCartData(cartObj))
+    if(cartObj.isChange)
+    {
+      
+      dispatch(sendCartData(cartObj))
+    }
       }, [cartObj, dispatch]);
 
   return (
