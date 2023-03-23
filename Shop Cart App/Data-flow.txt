@@ -1,0 +1,12 @@
+--> create the store folder and index.js file inside it now create ui-slice.js and inside that function we create a slice using useSlice() method and export that slice and that slice.action() 
+
+--> index file of store repo where to exort above slice and using configureStore() method we export that store 
+
+--> after main index.js file of our project we need wrap <App/> with <Provider> </Provider> and inside the provider we need to pass store props and the value of our store prop is store we export in our store repo index.js file
+
+--> to use this redux in cart button we need to invoke the onClick={} method in cart button and call cartHandler function
+
+--> inside this cartHandler fucntion we need to dispatch our ui-slice.js file action method, to dispatch this action first we need to call the useDispatch() function in cart.js file and store it in the dispatch variable and then we use the dispatch variable and call our slice 
+reducer function
+
+--> to conditionally toggle our cart button we need to use useSelector()  in App.js and extract the value of our reducer and conditionally render with the Cart component
