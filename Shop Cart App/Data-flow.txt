@@ -10,3 +10,5 @@
 reducer function
 
 --> to conditionally toggle our cart button we need to use useSelector()  in App.js and extract the value of our reducer and conditionally render with the Cart component
+
+--> add the item we pass the object and remove the item we use id of the object
