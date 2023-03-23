@@ -1,3 +1,4 @@
+import MealItemForm from "./MealItemForm";
 import classes from "./MealItems.module.css";
 
 // This file accept props through the AvailableMeal.js file
@@ -11,7 +12,10 @@ const MealItems = (props) => {
         <div className={classes.description}>{props.description}</div>
         <div className={classes.price}>{price}</div>
       </div>
-      <div>{/* Form  */}</div>
+      <div>
+        {/* Form  */}
+        <MealItemForm />
+      </div>
     </li>
   );
 };
