@@ -31,9 +31,17 @@ const DUMMY_MEALS = [
 ];
 
 const AvailableMeal = () => {
-// we can Wrap the meallist using MealItem componet where we pass our props
+  // we can Wrap the meallist using MealItem componet where we pass our props
   const mealList = DUMMY_MEALS.map((meal) => {
-    return <MealItems key={meal.id} description={meal.description} name={meal.name} price={meal.price} />;
+    return (
+      <MealItems
+        id={meal.id}
+        key={meal.id}
+        description={meal.description}
+        name={meal.name}
+        price={meal.price}
+      />
+    );
   });
   return (
     <section className={classes.meals}>
