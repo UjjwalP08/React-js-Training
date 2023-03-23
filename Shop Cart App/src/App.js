@@ -3,7 +3,7 @@ import Layout from "./components/Layout/Layout";
 import Products from "./components/Shop/Products";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { sendCartData } from "./store/cart-slice";
+import { sendCartData,getCartData } from "./store/cart-action";
 import Notification from "./components/UI/Notification";
 
 let isInintal = true;
@@ -14,6 +14,10 @@ function App() {
 
   const cartObj = useSelector((state) => state.cartReducer);
   const notification = useSelector((state) => state.uiReducer.notification);
+
+  useEffect(()=>{
+    dispatch(getCartData())
+  },[dispatch])
 
   useEffect(() => {
    
