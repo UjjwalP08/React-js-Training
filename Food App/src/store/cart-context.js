@@ -1,10 +1,11 @@
-import React, { createContext } from "react";
+import { createContext } from "react";
 
 const cartContext = createContext({
     items:[],
     totalAmount:0,
     addItem:(item)=>{},
-    removeItem:(id)=>{}
+    removeItem:(id)=>{},
+    clearCart:()=>{}
 });
 
 export default cartContext;

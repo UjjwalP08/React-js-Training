@@ -20,8 +20,7 @@ const AvailableMeal = () => {
         "https://food-app-be1c4-default-rtdb.firebaseio.com/meals.json"
       );
 
-      if(!data.ok)
-      {
+      if (!data.ok) {
         throw new Error("Something went wrong!!!!");
       }
       const resoponse = await data.json();
@@ -40,14 +39,13 @@ const AvailableMeal = () => {
       setIsLoading(false);
     };
 
-    fetchData().catch((error)=>{
+    fetchData().catch((error) => {
       setIsLoading(false);
       setError(error.message);
     });
   }, []);
 
-
-
+  // loading
   if (isLoading) {
     return (
       <section className={classes.loading}>
@@ -56,10 +54,13 @@ const AvailableMeal = () => {
     );
   }
 
-  if(error){
-    return (<section className={classes.error}>
-      <p>{error}</p>
-    </section>)
+  // erro handling
+  if (error) {
+    return (
+      <section className={classes.error}>
+        <p>{error}</p>
+      </section>
+    );
   }
   const mealList = meals.map((meal) => {
     return (
