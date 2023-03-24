@@ -16,7 +16,7 @@ const MealItemForm = (props) => {
     if(enterAmount.trim().length === 0 || latestAmount < 1 || latestAmount > 5 )
     {
       setAmountValid(false);
-      return
+      return;
     }
 
     props.onAddtoCart(latestAmount);
@@ -28,8 +28,8 @@ const MealItemForm = (props) => {
         ref={amountRef}
         label="Amount"
         input={{
-          id: "amount" + props.id,
-          type: "Number",
+          id: "amount_" + props.id,
+          type: "number",
           min: "1",
           max: "5",
           step: "1",

@@ -30,7 +30,7 @@ const MealItems = (props) => {
       </div>
       <div>
         {/* Form  */}
-        <MealItemForm onAddtoCart={addToCartHandler} />
+        <MealItemForm id={props.id} onAddtoCart={addToCartHandler} />
       </div>
     </li>
   );

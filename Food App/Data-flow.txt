@@ -6,3 +6,42 @@ above button location in side the header.js->HeaderButton.js so we need to pass 
 --> to close the cart the close button which show when the modal is appeart is exist in the Cart.js file so we need to pass the hideCartHandler function as props to Cart.js file
 
 --> we also need to close modal when use click the any-where outside the modal for that we need to pass prop through Cart.js file to Modal.js file
+
+
+
+
+    if(action.type === 'ADD')
+    {
+      const updatedAmount = state.totalAmount + action.item.price*action.item.amount
+      
+      const existItemIndex = state.items.findIndex(item => item.id === action.item.id);
+      
+      const existItem = state.items[existItemIndex];
+      let updatedItems ;
+
+      if(existItem)
+      {
+        // item already exist 
+        const updatedItem = {
+            ...existItem,
+            amount:existItem.amount + action.item.amont
+        };
+
+        updatedItems = [...state.items];
+        updatedItems[existItemIndex] = updatedItem;
+
+      }
+      else{
+        // item added for 1st time
+        updatedItems = state.items.concat(action.item)
+      }
+
+        return {
+            items:updatedItems,
+            totalAmount:updatedAmount
+        }
+
+    }
+
+    return initalCart;
+}

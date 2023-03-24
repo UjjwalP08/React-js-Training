@@ -20,7 +20,7 @@ const Modal = (props) => {
     <>
       {/* onHideCart prop is comming from the Cart.js file and pass to BackDrop as prop name onCloseCart */}
       {createPortal(<Backdrop onCloseCart={props.onHideCart} />, location)};
-      {createPortal(<ModalOverlay>{props.children}</ModalOverlay>, location)}
+      {createPortal(<ModalOverlay> {props.children }</ModalOverlay>, location)}
     </>
   );
 };
