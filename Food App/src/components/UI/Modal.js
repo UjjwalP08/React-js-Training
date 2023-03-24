@@ -2,7 +2,7 @@ import { createPortal } from "react-dom";
 import classes from "./Modal.module.css";
 
 const Backdrop = (props) => {
-  return <div className={classes.backdrop} />;
+  return <div className={classes.backdrop} onClick={props.onCloseCart} />;
 };
 
 const ModalOverlay = (props) => {
@@ -18,8 +18,9 @@ const location = document.getElementById("overlay");
 const Modal = (props) => {
   return (
     <>
-      {createPortal(<Backdrop />, location)};
-      {createPortal(<ModalOverlay>{props.children}</ModalOverlay>,location)}
+      {/* onHideCart prop is comming from the Cart.js file and pass to BackDrop as prop name onCloseCart */}
+      {createPortal(<Backdrop onCloseCart={props.onHideCart} />, location)};
+      {createPortal(<ModalOverlay>{props.children}</ModalOverlay>, location)}
     </>
   );
 };

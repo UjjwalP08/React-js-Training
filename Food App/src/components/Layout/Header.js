@@ -8,7 +8,8 @@ const Header = (props) => {
     <>
       <header className={classes.header}>
         <h1> TST Meals</h1>
-        <HeaderButton />
+        <HeaderButton onViewCart={props.onShowCart} />
+        {/* header.js pass onShowCart as the prop name onViewCart to HeaderButton.js file */}
       </header>
       <div className={classes['main-image']}>
         <img src={imgUrl} alt="Tasty Meal Provided by TST Technology" />

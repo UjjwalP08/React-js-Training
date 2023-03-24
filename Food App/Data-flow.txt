@@ -1,0 +1,8 @@
+---> to close the modal first we need to create eventlistner in app.js becuase in app.js we have our useState() that help to show and hide the cartItem
+
+--> to show or view the cart when we click on the  'Your Cart' button we need to show the cart but 
+above button location in side the header.js->HeaderButton.js so we need to pass it through props to the HeaderButton.js ,so when we click modal appear
+
+--> to close the cart the close button which show when the modal is appeart is exist in the Cart.js file so we need to pass the hideCartHandler function as props to Cart.js file
+
+--> we also need to close modal when use click the any-where outside the modal for that we need to pass prop through Cart.js file to Modal.js file

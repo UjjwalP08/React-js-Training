@@ -11,13 +11,14 @@ const Cart = (props) => {
           description: "Finest fish and veggies",
           price: 220.99,
         },
-      ].map((item) =>{return (
-        <li>{item.name}</li>
-      )})}
+      ].map((item) => {
+        return <li key={item.id}>{item.name}</li>;
+      })}
     </ul>
   );
   return (
-    <Modal>
+    // pass oncloseCart as prop name onHideCart
+    <Modal onHideCart={props.onCloseCart}>
       {cartItem}
       <div className={classes.total}>
         <span>Total Amount</span>
@@ -25,7 +26,9 @@ const Cart = (props) => {
       </div>
       <div className={classes.actions}>
         <button className={classes.button}>Order</button>
-        <button className={classes["button--alt"]}>Close</button>
+        <button className={classes["button--alt"]} onClick={props.onCloseCart}>
+          Close
+        </button>
       </div>
     </Modal>
   );
