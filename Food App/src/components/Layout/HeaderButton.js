@@ -5,7 +5,7 @@ import { useContext } from "react";
 
 const HeaderButton = (props) => {
   const cartCtx = useContext(cartContext);
-  // when we add the item in the cart more than one time we need to show it
+  // when we add the item in the cart more than one time we need to show it and here curNum value is 0
   const numberOfItem = cartCtx.items.reduce((curNum,item)=>{
     return curNum + item.amount;
   },0)
