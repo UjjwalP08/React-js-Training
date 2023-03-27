@@ -47,7 +47,7 @@ const CheckoutForm = (props) => {
 
     if (!formValid) {
       // form not valid
-      console.log('form is not valid');
+    //   console.log('form is not valid');
       return;
     }
     // form valid  and submit data to serever
