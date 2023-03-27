@@ -3,9 +3,11 @@ const Products = () => {
   return (
     <>
       <h1>Products Page</h1>
-      <p>
-       {/* Back to  <Link to="/"> Home page </Link> */}
-      </p>
+      <ul>
+        <li>Product 1</li>
+        <li>Product 2</li>
+        <li>Product 3</li>
+      </ul>
     </>
   );
 };
