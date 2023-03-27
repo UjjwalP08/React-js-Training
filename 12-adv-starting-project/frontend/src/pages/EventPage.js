@@ -3,7 +3,8 @@ import { useLoaderData } from "react-router-dom";
 import EventsList from "../components/EventsList";
 
 function EventsPage() {
-    const events = useLoaderData();
+  const data = useLoaderData();
+  const events = data.events;
   return (
     <>
       <EventsList events={events} />
@@ -13,13 +14,17 @@ function EventsPage() {
 export default EventsPage;
 
 // import this function in App.js to set the value of loader property
-export async function loader () {
-    const response = await fetch("http://localhost:8080/events");
+export async function loader() {
+  const response = await fetch("http://localhost:8080/events");
 
-    if (!response.ok) {
-    } else {
-      const resData = await response.json();
-      return resData.events;
-    }
+  if (!response.ok) {
+    // throw an error
+    // throw {message:"An Error Occurred"}
+    // another way
+    throw new Response(JSON.stringify({ message: "Could not fetch events you looking" }), {
+      status: 500,
+    });
+  } else {
+    return response;
+  }
 }
-
