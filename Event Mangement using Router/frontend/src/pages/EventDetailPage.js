@@ -4,7 +4,7 @@ import EventItem from "../components/EventItem";
 
 const EventDetailPage = () => {
   const data = useRouteLoaderData('event-details');
-  return (<EventItem event={data.event} />);
+  return (<EventItem  event={data.event} />);
 };
 
 export default EventDetailPage;

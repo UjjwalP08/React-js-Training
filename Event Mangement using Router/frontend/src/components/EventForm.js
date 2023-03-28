@@ -1,10 +1,11 @@
-import { useNavigate,Form,useNavigation } from "react-router-dom";
+import { useNavigate,Form,useNavigation,useActionData,json,redirect } from "react-router-dom";
 
 import classes from "./EventForm.module.css";
 
 function EventForm({ method, event }) {
   const navigate = useNavigate();
   const navigation = useNavigation();
+  const data = useActionData();
 
   const isSumbmiting = navigation.state === 'submitting';
 
@@ -14,7 +15,10 @@ function EventForm({ method, event }) {
 
   return (
     // use From component for using an action
-    <Form method="post" className={classes.form}>
+    <Form method={method} className={classes.form}>
+      {data && data.errors && <ul>
+        {Object.values(data.errors).map(err => <li key={err}>{err}</li>)}
+        </ul>}
       <p>
         <label htmlFor="title">Title</label>
         <input
@@ -66,3 +70,55 @@ function EventForm({ method, event }) {
 }
 
 export default EventForm;
+
+
+// we use Form component of the react-router so the action attribut by defalut perfor onSubmit event
+export async function action ({request,params})
+{
+  const method = request.method;
+  const data = await request.formData();
+
+  const eventData = {
+    title:data.get('title'),
+    image:data.get('image'),
+    date:data.get('date'),
+    description:data.get('description')
+  };
+
+  let url = 'http://localhost:8080/events';
+
+  if(method === 'PATCH')
+  {
+    const id = params.eventId;
+    url = 'http://localhost:8080/events/' + id;
+  }
+
+  // use to send the requeset to the data base
+  const response = await fetch(url,{
+    method:method,
+    headers:{
+      'Content-Type':'application/json'
+    },
+    body:JSON.stringify(eventData)
+  });
+
+  if(response.status === 422)
+  {
+    return response; 
+  }
+
+  if (!response.ok) {
+    // throw an error
+    throw json(
+      {
+        message: "Could not send data",
+      },
+      {
+        status: 500,
+      }
+    );
+  }
+
+  return redirect('/events');
+}
+
