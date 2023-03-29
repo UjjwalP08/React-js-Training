@@ -14,7 +14,8 @@ import RootLayout from './pages/Root';
 import { action as manipulateEventAction } from './components/EventForm';
 import NewsletterPage, { action as newsletterAction } from './pages/Newsletter';
 import AuthenticationPage,{action as authAction} from './pages/Authentication';
-import {action as logoutAction, tokenLoader} from './pages/Logout'
+import {action as logoutAction} from './pages/Logout'
+import { loaderProtct, tokenLoader } from './util/get-token';
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,7 @@ const router = createBrowserRouter([
                 path: 'edit',
                 element: <EditEventPage />,
                 action: manipulateEventAction,
+                loader:loaderProtct
               },
             ],
           },
@@ -55,6 +57,7 @@ const router = createBrowserRouter([
             path: 'new',
             element: <NewEventPage />,
             action: manipulateEventAction,
+            loader:loaderProtct
           },
         ],
       },
