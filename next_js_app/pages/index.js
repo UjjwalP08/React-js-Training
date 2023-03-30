@@ -26,18 +26,18 @@ const Homepage = (props) => {
 
 export default Homepage;
 
-// export async function getStaticProps()
-// {
-//     // above function is use for the fetch data from an API which use page re-rendering and the name must be getStaticProps()
-//     // we want to pass props on Homepage which contain our data that we want to show
-//     return {
-//         props:{
-//             meetups:DUMMY_DATA
-//         }
-//     }
-// }
+export async function getStaticProps()
+{
+    // above function is use for the fetch data from an API which use page re-rendering and the name must be getStaticProps()
+    // we want to pass props on Homepage which contain our data that we want to show
+    return {
+        props:{
+            meetups:DUMMY_DATA
+        }
+    }
+}
 
-// alternate of the getStaticProps()
+// alternate of the getServerSideProps()
 // export async function getServerSideProps(context) {
 //   const req = context.req;
 //   const res = context.res;
