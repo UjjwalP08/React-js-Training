@@ -1,33 +1,34 @@
 import MeetupDetail from "@/components/meetups/MeetupDetail";
+import { MongoClient, ObjectId } from "mongodb";
 
-const MeetupIds = () => {
+const MeetupIds = (props) => {
   return (
     <MeetupDetail
-      image="https://images.unsplash.com/photo-1679237526223-8a5cbe0ef7a5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDM5fE04alZiTGJUUndzfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=600&q=60"
-      title="Building"
-      address="Baker Street,London"
-      descripton="night image of building in london"
+      image={props.meetupData.image}
+      title={props.meetupData.title}
+      address={props.meetupData.address}
+      descripton={props.meetupData.descripton}
     />
   );
 };
 
-export default MeetupIds;
-
 export async function getStaticPaths() {
+  const client = await MongoClient.connect(
+    "mongodb+srv://Ujjwal_TST:Ujjwal123@cluster0.qii00ha.mongodb.net/meetups?retryWrites=true&w=majority"
+  );
+  const db = client.db();
+
+  const meetupCollection = db.collection("meetups");
+
+  const meetups = await meetupCollection.find({}, { _id: 1 }).toArray();
+
+  client.close();
+
   return {
     fallback: false,
-    paths: [
-      {
-        params: {
-          meetupId: "m1",
-        },
-      },
-      {
-        params: {
-          meetupId: "m2",
-        },
-      },
-    ],
+    paths: meetups.map((meetup) => ({
+      params: { meetupId: meetup._id.toString() },
+    })),
   };
 }
 
@@ -36,16 +37,35 @@ export async function getStaticProps(context) {
 
   console.log(meetupId);
 
+  const client = await MongoClient.connect(
+    "mongodb+srv://Ujjwal_TST:Ujjwal123@cluster0.qii00ha.mongodb.net/meetups?retryWrites=true&w=majority"
+  );
+  const db = client.db();
+
+  const meetupCollection = db.collection("meetups");
+
+  // const data = await meetupCollection.findOne({
+  //    _id : ObjectId(meetupId),
+  // });
+  const selectedMeetup = await meetupCollection.findOne({
+    _id: ObjectId(meetupId),
+  });
+
+  // console.log(data);
+
+  client.close();
+
   return {
     props: {
       meetupData: {
-        id: meetupId,
-        image:
-          "https://images.unsplash.com/photo-1679237526223-8a5cbe0ef7a5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDM5fE04alZiTGJUUndzfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=600&q=60",
-        title: "Building",
-        address: "Baker Street,London",
-        descripton: "night image of building in london",
+        id: selectedMeetup._id.toString(),
+        image: selectedMeetup.image,
+        title: selectedMeetup.title,
+        address: selectedMeetup.address,
+        descripton: selectedMeetup.descripton,
       },
     },
   };
 }
+
+export default MeetupIds;

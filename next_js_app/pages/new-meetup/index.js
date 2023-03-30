@@ -1,12 +1,25 @@
 import NewMeetupForm from "@/components/meetups/NewMeetupForm";
+import { useRouter } from "next/router";
 
-const NewMeetUp = ()=>{
+const NewMeetUp = () => {
+    const router = useRouter();
+  async function meetUpHandler(frmDataObj) {
+    const response = await fetch('/api/meet-up', {
+      method: "POST",
+      body: JSON.stringify(frmDataObj),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    // console.log(frmDataObj);
+    const data = await response.json();
 
-    const meetUpHandler = (frmDataObj)=>{
-        console.log(frmDataObj);
-    }
+    console.log(data);
 
-    return <NewMeetupForm onAddMeetup={meetUpHandler} />
+    router.push('/');
+  }
+
+  return <NewMeetupForm onAddMeetup={meetUpHandler} />;
 };
 
-export default NewMeetUp
+export default NewMeetUp;
