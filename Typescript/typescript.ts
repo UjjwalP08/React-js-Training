@@ -36,11 +36,11 @@ obj1 = {
 
 console.log(obj1);
 
-// Array of an object
-let people: {
-  name: string;
-  age: number;
-};
+// // Array of an object
+// let people: {
+//   name: string;
+//   age: number;
+// };
 
 // type inference
 let str = "this is the type-script section";
@@ -55,3 +55,16 @@ console.log(str1);
 
 str1 = 4523;
 console.log(str1);
+
+
+// type alias
+// specify the type only once then use type variable
+type obj1 = {
+    name: string;
+    age: number;
+  };
+
+var people : obj1[];
+// console.log(people);
+
+

@@ -20,8 +20,11 @@ obj1 = {
     age: 21,
 };
 console.log(obj1);
-// Array of an object
-var people;
+// // Array of an object
+// let people: {
+//   name: string;
+//   age: number;
+// };
 // type inference
 var str = "this is the type-script section";
 // type-inference means directly initalize value to variable w/o specify the data-type ,but now we don't able to initalze another data type to str variable
@@ -32,3 +35,5 @@ var str1 = "this is the type-script section";
 console.log(str1);
 str1 = 4523;
 console.log(str1);
+var people;
+console.log(people);
