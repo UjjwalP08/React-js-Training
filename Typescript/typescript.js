@@ -1,3 +1,12 @@
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
 function add(a, b) {
     return a + b;
 }
@@ -36,4 +45,21 @@ console.log(str1);
 str1 = 4523;
 console.log(str1);
 var people;
-console.log(people);
+// console.log(people);
+// function & types
+function sum(a, b) {
+    return a + b;
+    // this function return number type
+}
+function print1(value) {
+    console.log(value);
+    // this function return nothing so it return void type
+}
+// Generics
+function adds1(arr, value) {
+    var updatedArr = __spreadArray([value], arr, true);
+    return updatedArr;
+}
+var demo = [1, 2, 3];
+var newarr = adds1(demo, -4);
+console.log(newarr);
