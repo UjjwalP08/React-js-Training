@@ -23,7 +23,6 @@ let arr: string[];
 arr = ["hello", "how are you", "good"];
 console.log(arr);
 
-
 // object
 let obj1: {
   name: string;
@@ -35,19 +34,24 @@ obj1 = {
   age: 21,
 };
 
-console.log((obj1));
-
+console.log(obj1);
 
 // Array of an object
-let people:{
-    name:string,
-    age:number
-}
-
+let people: {
+  name: string;
+  age: number;
+};
 
 // type inference
 let str = "this is the type-script section";
 // type-inference means directly initalize value to variable w/o specify the data-type ,but now we don't able to initalze another data type to str variable
 console.log(str);
 
+// Union type
+let str1:string | number = "this is the type-script section";
+// using union type we initalize value which type is specified
 
+console.log(str1);
+
+str1 = 4523;
+console.log(str1);
