@@ -1,8 +1,9 @@
-function Todo() {
+import React from "react"
+
+const  Todo : React.FC <{items:string[]}> = (props) => {
   return (
     <ul>
-        <li>Leran React</li>
-        <li>Leran Typescript</li>
+        {props.items.map(item => <li key={item}>{item}</li>)}
     </ul>
   )
 }
