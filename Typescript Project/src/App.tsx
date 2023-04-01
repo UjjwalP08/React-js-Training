@@ -19,10 +19,15 @@ function App() {
     })
 
   }
+  const removeHandler = (todoId:string)=>{
+
+        setTodoData(prevState => prevState.filter(todo => todo.id !== todoId))
+
+  }
   return (
     <div >
       <AddTodo onAdd={addHandler}/>
-      <Todo items={todoData} />
+      <Todo items={todoData} onDeletTodo={removeHandler} />
     </div>
   );
 }
