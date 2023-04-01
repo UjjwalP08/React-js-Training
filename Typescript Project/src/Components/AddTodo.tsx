@@ -14,6 +14,7 @@ const AddTodo : React.FC<{onAdd: (text:string)=> void }> = (props) => {
 
     // add todo and show it
     props.onAdd(enterText)
+
   };
   return (
     <form onSubmit={submitHandler}>
