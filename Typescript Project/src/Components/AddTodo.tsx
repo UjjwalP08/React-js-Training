@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
-import classes from './AddTodo.module.css';
+import classes from "./AddTodo.module.css";
 
-const AddTodo : React.FC<{onAdd: (text:string)=> void }> = (props) => {
+const AddTodo: React.FC<{ onAdd: (text: string) => void }> = (props) => {
   const inputText = useRef<HTMLInputElement>(null);
 
   const submitHandler = (event: React.FormEvent) => {
@@ -14,8 +14,7 @@ const AddTodo : React.FC<{onAdd: (text:string)=> void }> = (props) => {
     }
 
     // add todo and show it
-    props.onAdd(enterText)
-
+    props.onAdd(enterText);
   };
   return (
     <form onSubmit={submitHandler} className={classes.form}>
