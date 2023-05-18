@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Card from "../UI/Card";
 import ExpanseDate from "../Expanses/ExpanseDate";
 
@@ -6,13 +6,11 @@ import ExpanseDate from "../Expanses/ExpanseDate";
 import "./ExpasnseItem.css";
 
 const ExpasnseItem = (props) => {
-  const [title, setTitle] = useState(props.title);
-
   // clickHandler event-handler
-  const clickHandler = () => {
-    setTitle("Updated");
-    console.log(title);
-  };
+  // const clickHandler = () => {
+  //   setTitle("Updated");
+  //   console.log(title);
+  // };
 
   return (
     <Card className="expense-item">

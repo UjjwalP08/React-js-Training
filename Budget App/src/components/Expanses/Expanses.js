@@ -8,7 +8,6 @@ import ExpanseChart from "./ExpanseChart";
 const Expanses = (props) => {
   const [selectYear, setSelectYear] = useState("2023");
 
-
   const ExpansesYear = (year) => {
     setSelectYear(year);
   };
@@ -19,13 +18,13 @@ const Expanses = (props) => {
   });
 
   return (
-    <li>
+    <>
       <Card className="expense">
         <ExpensesFilter defalutYear={selectYear} onExpanseYear={ExpansesYear} />
         <ExpanseChart expansees={filterExpanse} />
         <ExpansesList yearFliter={filterExpanse} />
       </Card>
-    </li>
+    </>
   );
 };
 
