@@ -1,0 +1,21 @@
+-->  initally we create the store folder in src folder which contain our redux file (index.js) 
+
+--> wrap the main index.js file with <Provider> </Provider> so we can use the redux inside all the our componet and pass the prop which name store and the value of this prop is our store 
+
+--> use the useSelector() redux hook in the counter to extract the data from store
+
+--> use the useDispatch() hook in counter to trigger/dispatch the action when the button clicked
+
+--> in increase by 5 buttons arrow function we pass payload through dispatch function
+
+--> create the function of toggle button using reducer and manage through a multiple state ,the another state we add here it is showCounter state
+
+
+-->Use the react-redux toolkit library
+-->In this library we use createSlice() method for trigger/dispatch the action and the createSlice() method contain object and inside this object we have slice name,initalState and the reducer functions
+
+-->to connect createSlice() with store we use configureStore() method which accept object have reducer property which help to connect with the store
+
+--> after configureStore() we need to export our all reducer functions using .actions() method and to use extra value we have to use action.payload in reducer function and the function we export use in the file we want
+
+-->when we use the multiple slice we need to use that slice store reducer function name to access it value through different components

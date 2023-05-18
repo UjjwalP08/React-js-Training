@@ -1,33 +1,32 @@
-import React from 'react'
-import ExpasnseItem from '../Expanses/ExpasnseItem'
-import Card from '../UI/Card'
-import '../Expanses/Expanses.css'
+import React, { useState } from "react";
+import Card from "../UI/Card";
+import "../Expanses/Expanses.css";
+import ExpensesFilter from "./ExpensesFilter";
+import ExpansesList from "./ExpansesList";
+import ExpanseChart from "./ExpanseChart";
 
-const Expanses = (props) =>  {
+const Expanses = (props) => {
+  const [selectYear, setSelectYear] = useState("2023");
+
+
+  const ExpansesYear = (year) => {
+    setSelectYear(year);
+  };
+
+  // to show the output of only given year so use below filter function
+  const filterExpanse = props.item.filter((ele) => {
+    return ele.date.getFullYear().toString() === selectYear;
+  });
+
   return (
-    <Card className='expense'>
-        <ExpasnseItem
-        date={props.item[0].date}
-        heading={props.item[0].heading}
-        price={props.item[0].price}
-      />
-      <ExpasnseItem
-        date={props.item[1].date}
-        heading={props.item[1].heading}
-        price={props.item[1].price}
-      />
-      <ExpasnseItem
-        date={props.item[2].date}
-        heading={props.item[2].heading}
-        price={props.item[2].price}
-      />
-      <ExpasnseItem
-        date={props.item[3].date}
-        heading={props.item[3].heading}
-        price={props.item[3].price}
-      />
-    </Card>
-  )
-}
+    <li>
+      <Card className="expense">
+        <ExpensesFilter defalutYear={selectYear} onExpanseYear={ExpansesYear} />
+        <ExpanseChart expansees={filterExpanse} />
+        <ExpansesList yearFliter={filterExpanse} />
+      </Card>
+    </li>
+  );
+};
 
-export default Expanses
+export default Expanses;
